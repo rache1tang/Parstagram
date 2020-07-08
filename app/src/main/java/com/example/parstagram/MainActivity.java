@@ -37,20 +37,27 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final String TAG = "MainActivity";
-    public static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 42;
-
     BottomNavigationView bottomNavigation;
+    Button btnLogout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        btnLogout = findViewById(R.id.btnLogout);
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(MainActivity.this, "Logout Successful!", Toast.LENGTH_SHORT).show();
+                logout();
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+
         bottomNavigation = findViewById(R.id.bottomNavigation);
         final FragmentManager fragmentManager = getSupportFragmentManager();
-
-        // queryPosts();
 
         bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -75,6 +82,10 @@ public class MainActivity extends AppCompatActivity {
 
         // set default selection
         bottomNavigation.setSelectedItemId(R.id.actionHome);
+    }
+
+    private void logout() {
+        ParseUser.logOut();
     }
 
 
