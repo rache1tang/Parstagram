@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    tools:context=".fragments.ProfileFragment">
+
+    <FrameLayout
+        android:id="@+id/flProfileContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignTop="@+id/divider2"
+        android:layout_marginTop="10dp"></FrameLayout>
+
+    <ImageView
+        android:id="@+id/ivProfileProfile"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_baseline_account_circle_24" />
+
+    <TextView
+        android:id="@+id/tvProfileUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_toEndOf="@+id/ivProfileProfile"
+        android:text="TextView"
+        android:textSize="24sp" />
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/ivProfileProfile"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp"
+        android:background="?android:attr/listDivider" />
+
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:text="Logout" />
+
+</RelativeLayout>

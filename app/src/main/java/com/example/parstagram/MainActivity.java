@@ -1,60 +1,40 @@
 package com.example.parstagram;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import android.app.Notification;
+import android.content.ClipData;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
-import android.provider.MediaStore;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.parstagram.fragments.ComposeFragment;
 import com.example.parstagram.fragments.PostsFragment;
+import com.example.parstagram.fragments.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.parse.FindCallback;
-import com.parse.ParseException;
-import com.parse.ParseFile;
-import com.parse.ParseQuery;
 import com.parse.ParseUser;
-import com.parse.SaveCallback;
-
-import java.io.File;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     BottomNavigationView bottomNavigation;
-    Button btnLogout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnLogout = findViewById(R.id.btnLogout);
-        btnLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "Logout Successful!", Toast.LENGTH_SHORT).show();
-                logout();
-                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(intent);
-            }
-        });
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_HOME |
+                ActionBar.DISPLAY_SHOW_TITLE | ActionBar.DISPLAY_USE_LOGO);
+        getSupportActionBar().setIcon(R.drawable.nav_logo_whiteout);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
 
         bottomNavigation = findViewById(R.id.bottomNavigation);
         final FragmentManager fragmentManager = getSupportFragmentManager();
@@ -82,10 +62,6 @@ public class MainActivity extends AppCompatActivity {
 
         // set default selection
         bottomNavigation.setSelectedItemId(R.id.actionHome);
-    }
-
-    private void logout() {
-        ParseUser.logOut();
     }
 
 

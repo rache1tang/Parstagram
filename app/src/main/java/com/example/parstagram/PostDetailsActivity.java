@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.parse.ParseFile;
+import com.parse.ParseUser;
 
 import org.parceler.Parcels;
 
@@ -20,6 +21,7 @@ public class PostDetailsActivity extends AppCompatActivity {
     TextView tvDetailsCaption;
     ImageView ivDetailsImage;
     ImageView ivDetailsExit;
+    ImageView ivDetailsProfile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,15 +33,23 @@ public class PostDetailsActivity extends AppCompatActivity {
         tvDetailsCaption = findViewById(R.id.tvDetailsCaption);
         ivDetailsImage = findViewById(R.id.ivDetailsImage);
         ivDetailsExit = findViewById(R.id.ivDetailsExit);
+        ivDetailsProfile = findViewById(R.id.ivDetailsProfile);
 
         Post post = Parcels.unwrap(getIntent().getParcelableExtra(Post.class.getSimpleName()));
         tvDetailsTime.setText(post.getTime());
         tvDetailsUsername.setText(post.getUser().getUsername());
         tvDetailsCaption.setText(post.getDescription());
+
         ParseFile image = post.getImage();
         if (image != null) {
-            Glide.with(getApplicationContext()).load(post.getImage().getUrl()).into(ivDetailsImage);
+            Glide.with(getApplicationContext()).load(image.getUrl()).into(ivDetailsImage);
         }
+
+        ParseFile profile = post.getUser().getParseFile("profilePic");
+        if (profile != null) {
+            Glide.with(getApplicationContext()).load(profile.getUrl()).circleCrop().into(ivDetailsProfile);
+        }
+
         ivDetailsExit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
