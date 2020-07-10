@@ -2,6 +2,7 @@ package com.example.parstagram;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -42,10 +43,6 @@ public class PostDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_details);
 
-        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_HOME |
-                ActionBar.DISPLAY_SHOW_TITLE | ActionBar.DISPLAY_USE_LOGO);
-        getSupportActionBar().setIcon(R.drawable.nav_logo_whiteout);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         rvComments = findViewById(R.id.rvComments);
         allComments = new ArrayList<>();

@@ -30,10 +30,6 @@ public class ComposeCommentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_compose_comment);
 
-        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_HOME |
-                ActionBar.DISPLAY_SHOW_TITLE | ActionBar.DISPLAY_USE_LOGO);
-        getSupportActionBar().setIcon(R.drawable.nav_logo_whiteout);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         ivCommentExit = findViewById(R.id.ivCommentExit);
         etCommentText = findViewById(R.id.etCommentText);

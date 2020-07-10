@@ -154,11 +154,12 @@ public class ComposeFragment extends Fragment {
         post.setDescription(description);
         post.setImage(new ParseFile(photoFile));
         post.setUser(currentUser);
+        post.setLikedUsers();
         post.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {
                 if (e != null) {
-                    Log.e(TAG, "Error saving post");
+                    Log.e(TAG, "Error saving post", e);
                     Toast.makeText(getContext(), "Error saving post", Toast.LENGTH_SHORT).show();
                     return;
                 }

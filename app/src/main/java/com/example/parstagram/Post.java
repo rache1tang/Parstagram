@@ -61,5 +61,9 @@ public class Post extends ParseObject {
         return getJSONArray(KEY_LIKERS);
     }
 
+    public void setLikedUsers() {
+        put(KEY_LIKERS, new JSONArray());
+    }
+
 }
 
