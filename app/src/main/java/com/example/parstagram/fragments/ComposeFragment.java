@@ -46,7 +46,6 @@ public class ComposeFragment extends Fragment {
     public static final String TAG = "ComposeFragment";
 
     EditText etCaption;
-    Button btnCapture;
     Button btnPost;
     ImageView ivPicture;
     File photoFile;
@@ -68,9 +67,10 @@ public class ComposeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         etCaption = view.findViewById(R.id.etDescription);
-        btnCapture = view.findViewById(R.id.btnCapture);
         btnPost = view.findViewById(R.id.btnPost);
         ivPicture = view.findViewById(R.id.ivPicture);
+
+        ivPicture.setImageResource(R.drawable.camera);
 
         btnPost.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,7 +89,7 @@ public class ComposeFragment extends Fragment {
             }
         });
 
-        btnCapture.setOnClickListener(new View.OnClickListener() {
+        ivPicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 launchCamera();

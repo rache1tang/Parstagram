@@ -15,6 +15,7 @@
         android:layout_marginTop="10dp"
         android:layout_toEndOf="@+id/ivPostProfile"
         android:textSize="18sp"
+        android:textStyle="bold"
         tools:text="username" />
 
     <ImageView
@@ -75,4 +76,14 @@
         android:layout_marginTop="10dp"
         android:layout_toEndOf="@+id/ivHeart"
         tools:text="likes" />
+
+    <ImageView
+        android:id="@+id/ivComment"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:layout_below="@+id/ivPostPic"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/tvLikes"
+        app:srcCompat="@drawable/ufi_comment" />
 </RelativeLayout>

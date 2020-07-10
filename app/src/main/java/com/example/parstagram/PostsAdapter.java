@@ -1,5 +1,6 @@
 package com.example.parstagram;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
@@ -32,10 +33,19 @@ import org.w3c.dom.Text;
 
 import java.util.List;
 
+import static android.app.Activity.RESULT_OK;
+import static androidx.core.app.ActivityCompat.startActivityForResult;
+import static androidx.core.content.ContextCompat.createDeviceProtectedStorageContext;
+import static androidx.core.content.ContextCompat.startActivity;
+
 public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> {
 
-    private Context context;
-    private List<Post> posts;
+    private static Context context;
+    private static List<Post> posts;
+
+    public static final String KEY_POST = "poster";
+    public static final String KEY_NEW_COMMENT = "new_comment";
+    public static final int MAKE_COMMENT_CODE = 20;
 
     public PostsAdapter(Context context, List<Post> posts) {
         this.context = context;
@@ -77,6 +87,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         private ImageView ivPostProfile;
         private ImageView ivHeart;
         private TextView tvLikes;
+        private ImageView ivComment;
         JSONArray likers;
         boolean isLiked;
         int userIndex;
@@ -90,6 +101,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             ivPostProfile = itemView.findViewById(R.id.ivPostProfile);
             ivHeart = itemView.findViewById(R.id.ivHeart);
             tvLikes = itemView.findViewById(R.id.tvLikes);
+            ivComment = itemView.findViewById(R.id.ivComment);
         }
 
         public void bind(final Post post) throws JSONException { // bind each component to the view holder
@@ -139,8 +151,6 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
                 ivHeart.setImageResource(R.drawable.ic_vector_heart);
             }
 
-
-
             Glide.with(context).load(post.getImage().getUrl()).into(ivPostPic);
 
             ParseFile image = post.getUser().getParseFile("profilePic");
@@ -168,11 +178,39 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
                     notifyDataSetChanged();
                 }
             });
+
+            ivComment.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(context, "comment", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(context, ComposeCommentActivity.class);
+                    intent.putExtra(KEY_POST, Parcels.wrap(post));
+
+                    ((Activity) context).startActivityForResult(intent, MAKE_COMMENT_CODE);
+                }
+            });
         }
 
         @Override
         public void onClick(View view) {
 
+        }
+
+    }
+
+    public static void onActivityResult(int requestCode, int resultCode, Intent data){
+        Log.i("PostsAdapter", "activty returned");
+
+        if (resultCode == RESULT_OK && requestCode == MAKE_COMMENT_CODE) {
+            Comment comment = Parcels.unwrap(data.getParcelableExtra(KEY_NEW_COMMENT));
+            comment.saveInBackground(new SaveCallback() {
+                @Override
+                public void done(ParseException e) {
+                    if (e != null) {
+                        Log.e("PostsAdapter", "error saving comment");
+                    }
+                }
+            });
         }
     }
 }
