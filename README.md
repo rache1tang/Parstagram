@@ -39,12 +39,20 @@ The following **additional** features are implemented:
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1.
-2.
+1. Better way (more efficient way) to keep track of likes / if the current user liked the post
+2. How to implement following / keeping track of which post belongs to who in an efficient way
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
+* https://github.com/rache1tang/Parstagram/blob/master/change_profile.gif
+* https://github.com/rache1tang/Parstagram/blob/master/scroll_profile.gif
+* https://github.com/rache1tang/Parstagram/blob/master/refresh.gif
+* https://github.com/rache1tang/Parstagram/blob/master/comment_details.gif
+* https://github.com/rache1tang/Parstagram/blob/master/signup.gif
+* https://github.com/rache1tang/Parstagram/blob/master/login_out.gif
+* https://github.com/rache1tang/Parstagram/blob/master/scroll_like.gif
+* https://github.com/rache1tang/Parstagram/blob/master/post.gif
 
 
 GIF created with [Kap](https://getkap.co/).
