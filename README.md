@@ -53,9 +53,8 @@ Here's a walkthrough of implemented user stories:
 * https://github.com/rache1tang/Parstagram/blob/master/login_out.gif
 * https://github.com/rache1tang/Parstagram/blob/master/scroll_like.gif
 * https://github.com/rache1tang/Parstagram/blob/master/post.gif
- [added for resubmission]
- * https://github.com/rache1tang/Parstagram/blob/master/persistence.gif
- * https://github.com/rache1tang/Parstagram/blob/master/details.gif
+ * https://github.com/rache1tang/Parstagram/blob/master/persistence.gif [added for resubmission]
+ * https://github.com/rache1tang/Parstagram/blob/master/details.gif [added for resubmission]
 
 
 GIF created with [Kap](https://getkap.co/).
